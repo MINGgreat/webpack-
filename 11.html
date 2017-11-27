@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <script>
+        //有字符串 var str="abc345efgabcab",请写出3条js语句分别实现如下3个功能:
+        var str = "abc345efgabcab"
+            //1.去掉字符串中的"a","b","c"字符，形成结果：“345efg”.
+            // console.log(str.replace(/[abc]/g,""));
+            //console.log(str.replace(/([a-c])/g, ''));
+
+        // replace() 方法用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串。
+        //g 匹配字符串中所有符合条件的
+        //  [abc]	查找方括号之间的a b c。
+
+        //2.将字符串的数字用中括号括起来，形成结果：“abc[3][4][5]efgabcab”.
+        //console.log(str.replace(/[0-9]/g, "[$&]"));
+        console.log(str.replace(/(\d)/g, '[$1]'));
+        var s2 = str.replace(/[\d]/g, function(v) {
+            return '[' + v + ']'
+        });
+        console.log(s2);
+
+
+        //   [0-9]	查找任何从 0 至 9 的数字。
+        //     \d       查找数字。
+        //	$1   第一个匹配分组内的内容，正则表达式中第一对圆括号中的表达式匹配到的内容
+
+        //3.将字符串中每个数字的值分别乘以2，行成结果：“ abc6810efgabcab”.
+
+        //        console.log(str.replace(/[0-9]/g, function (value) {
+        //                return value *2;
+        //            }))
+        var s3 = str.replace(/[\d
